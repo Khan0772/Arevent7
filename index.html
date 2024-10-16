@@ -1,0 +1,1182 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Event</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<style>
+    body {
+        background-color: black;
+    }
+
+    #hero {
+        margin-top: 5%;
+        /* padding: 40px 10px; */
+        /* background-color: aqua; */
+        background-image: linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.10));
+    }
+
+    video {
+        width: 100%;
+        overflow: hidden;
+        object-fit: fill;
+        -webkit-filter: blur(2px);
+        /* -moz-filter: blur(15px); */
+        /* -o-filter: blur(15px); */
+        /* -ms-filter: blur(15px); */
+        /* filter: blur(15px); */
+
+    }
+
+    #card {
+        /* background-color: aliceblue; */
+        padding: 40px 10px;
+        font-family: "Poppins", sans-serif;
+        margin-top: 5%;
+    }
+
+    #card h1 {
+
+        color: rgb(0, 231, 31);
+        font-size: 50px;
+        padding: 10px;
+        /* text-align: center; */
+
+    }
+
+    .container {
+        /* background-color: aqua; */
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        padding: 10px;
+    }
+
+    @media only screen and (max-width: 931px) {
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+
+
+        }
+
+        #card h1 {
+            font-size: 40px;
+        }
+    }
+
+    @media only screen and (max-width: 701px) {
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+
+        }
+
+        #card h1 {
+            font-size: 30px;
+        }
+
+
+    }
+
+    @media only screen and (max-width: 483px) {
+        .container {
+            display: grid;
+            grid-template-columns: 1fr;
+
+
+
+
+        }
+
+        #card h1 {
+            text-align: center;
+            font-size: 30px;
+        }
+
+
+    }
+
+    .box {
+        width: 100%;
+        /* background-color: yellow; */
+        padding: 10px;
+    }
+
+    .card {
+        border-radius: 1%;
+        font-family: "Poppins", sans-serif;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.8));
+        /* color: rgba(245, 240, 240, 0.39); */
+        background-color: rgb(0, 82, 175);
+        width: 100%;
+        color: rgb(0, 33, 61);
+        box-shadow: 0px 4px 4px;
+    }
+
+    .box img {
+        padding: 5px;
+        border-radius: 5%;
+        height: 200px;
+        width: 100%;
+    }
+
+    #stage {
+        border: 1px solid white;
+        outline: none;
+
+        /* background-color: rgb(255, 255, 255); */
+        text-decoration: none;
+        text-align: center;
+        align-items: center;
+        color: rgb(245, 245, 245);
+        font-family: "Poppins", sans-serif;
+        width: 100%;
+        padding: 5px;
+        border-radius: 4%;
+
+    }
+
+    .container-fluid {
+        background-color: yellowgreen;
+        box-shadow: 0px 10px 10px;
+        padding: 10px;
+        top: 0;
+        position: fixed;
+    }
+
+    .container-fluid img {
+        width: 50px;
+        height: 50px;
+        background-color: yellowgreen;
+
+    }
+
+    .nav-item a {
+        color: aliceblue;
+
+        font-family: "Poppins", sans-serif;
+
+    }
+
+    .nav-item a:hover {
+        color: rgb(255, 255, 255);
+        border-bottom: 1px solid green;
+
+    }
+
+    .active {
+        color: aliceblue;
+        border-radius: 4%;
+        padding: 5px;
+    }
+
+    #vvv2 {
+        /* background-color: yellow; */
+        padding: 40px 10px;
+
+    }
+
+    .main {
+        /* background-color: violet; */
+        width: 100%;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        grid-template-columns: 1fr 1fr;
+        padding: 10px;
+        grid-gap: 1rem;
+    }
+
+    @media only screen and (max-width: 649px) {
+
+        .main {
+            display: grid;
+            align-items: center;
+            grid-template-columns: 1fr;
+            text-align: center;
+        }
+
+    }
+
+    .main1 {
+        width: 100%;
+
+
+    }
+
+    .main1 img {
+        width: 100%;
+        border-radius: 4%;
+
+    }
+
+    .text h2 {
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        color: green;
+    }
+
+    .text p {
+        font-family: "Poppins", sans-serif;
+        font-weight: 500;
+        color: white;
+        max-width: 700px;
+    }
+
+    .sumaey h3 {
+        color: green;
+        /* color: green; */
+        font-weight: bold;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .sumaey h6 {
+        color: white;
+        font-family: "Poppins", sans-serif;
+    }
+
+    .party h3 {
+        color: green;
+        font-weight: bold;
+        font-family: Arial, Helvetica, sans-serif;
+
+    }
+
+    .party h6 {
+        font-family: "Poppins", sans-serif;
+        color: white;
+
+
+
+    }
+
+    #main2 {
+        width: 100%;
+        overflow: hidden;
+        object-fit: fill;
+        -webkit-filter: blur();
+    }
+
+    #service h1 {
+        font-family: "Poppins", sans-serif;
+        color: rgb(0, 231, 31);
+        font-size: 50px;
+        padding: 10px;
+
+    }
+
+    #conatct {
+        /* background-color: yellowgreen; */
+        padding: 40px 10px;
+        margin-top: 3%;
+        /* text-align: center; */
+    }
+
+    #conatct h1 {
+        color: yellowgreen;
+        padding: 10px;
+        font-family: "Poppins", sans-serif;
+    }
+
+    .cont {
+        /* background-color: violet; */
+        padding: 10px;
+        justify-content: center;
+        grid-template-columns: 1fr;
+        display: grid;
+        grid-gap: 1rem;
+    }
+
+    .contt1 {
+        border-radius: 5%;
+        background-color: rgb(73, 226, 43);
+        background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(./image/download\ \(1\).jfif);
+        padding: 10px;
+        color: white;
+        background-position: fixed;
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 100%;
+    }
+
+    .flex {
+        display: flex;
+        /* background-color: aqua; */
+        padding: 2px;
+
+
+    }
+
+    .flex1 {
+        display: flex;
+        padding: 2px;
+    }
+
+    .flip {
+        display: flex;
+        padding: 2px;
+    }
+
+    .flip1 {
+        display: flex;
+        padding: 2px;
+    }
+
+    span {
+        font-size: 15px;
+        font-family: "Poppins", sans-serif;
+    }
+
+    @media only screen and (max-width:953px) {
+
+        span {
+            font-size: 12px;
+        }
+
+    }
+
+    @media only screen and (max-width:823px) {
+
+        .cont {
+            display: grid;
+            grid-template-columns: 1fr;
+            justify-content: center;
+        }
+
+        #conatct h1 {
+            text-align: start;
+        }
+    }
+
+
+
+    @media only screen and (max-width:500px) {
+        #service h1 {
+            font-size: 30px;
+            text-align: center;
+        }
+    }
+
+
+
+    .link {
+        padding: 5px;
+        /* text-align: center; */
+    }
+
+    .link a {
+        text-decoration: none;
+        font-size: 20px;
+        padding: 5px;
+    }
+
+    #what {
+        background-color: green;
+        color: aliceblue;
+        padding: 5px;
+        border-radius: 50%;
+    }
+
+    #lik {
+        background-color: blue;
+        border-radius: 50%;
+        color: aliceblue;
+        padding: 5px;
+    }
+
+    #face {
+        background-color: blue;
+        border-radius: 50%;
+        color: aliceblue;
+        padding: 5px;
+    }
+
+    #prag {
+        padding: 20px 0px 0px;
+        font-family: "Poppins", sans-serif;
+        max-width: 800px;
+    }
+
+    .contt1 span {
+        text-align: center;
+    }
+
+    #team {
+        padding: 40px 10px;
+        /* background-color: blue; */
+        margin-top: 4%;
+    }
+
+    .our {
+        display: grid;
+        align-items: center;
+        justify-content: center;
+        grid-template-columns: 150px 150px 150px 150px;
+    }
+
+    @media only screen and (max-width:591px) {
+
+        .our {
+
+            display: grid;
+            grid-template-columns: 150px 150px;
+
+        }
+
+
+
+
+    }
+
+    @media only screen and (max-width:300px) {
+
+        .our {
+
+            display: grid;
+            grid-template-columns: 150px;
+
+        }
+
+
+
+
+    }
+
+    #team h1 {
+        font-family: "Poppins", sans-serif;
+        text-align: center;
+        color: yellowgreen;
+    }
+
+    .worker img {
+        width: 100%;
+        height: 120px;
+        border-radius: 47%;
+        cursor: pointer;
+    }
+
+    .worker {
+        /* background-color: aqua; */
+        padding: 40px 10px;
+        width: 100%;
+
+    }
+
+    .image {
+        border: 2px solid green;
+        /* background-color: rgb(0, 211, 95); */
+        padding: 10px;
+        border-radius: 50%;
+        transition: all 1.0s ease;
+    }
+
+    .image:hover {
+
+        transform: scale(1.1);
+
+    }
+
+    .worker h6 {
+        text-align: center;
+        padding: 15px;
+        font-family: "Poppins", sans-serif;
+        color: aliceblue;
+    }
+
+
+
+
+
+    #video {
+        padding: 40px 10px;
+    }
+
+    #video h1 {
+        font-family: "Poppins", sans-serif;
+        color: yellowgreen;
+        padding: 10px;
+
+    }
+
+    .vio1 {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-gap: 1rem;
+    }
+
+    @media only screen and (max-width:811px) {
+        .vio1 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+    }
+
+    @media only screen and (max-width:701px) {
+        .vio1 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+    }
+
+    @media only screen and (max-width:450px) {
+        .vio1 {
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+
+    }
+
+    .card1-video img {
+        border-radius: 5%;
+        width: 100%;
+        height: 200px;
+
+    }
+    .card1-video img:hover{
+        background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
+        animation-play-state: calc(11);
+    }
+
+
+    /* General footer styles */
+    footer {
+        background-color: yellowgreen;
+        color: #fff;
+        padding: 40px 0;
+        font-family: Arial, sans-serif;
+    }
+
+    .footer-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .footer-column {
+        flex: 1;
+        min-width: 200px;
+        margin-bottom: 20px;
+    }
+
+    .footer-column h3 {
+        margin-bottom: 15px;
+        font-size: 18px;
+    }
+
+    .footer-column p,
+    .footer-column ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    }
+
+    .footer-column ul li {
+        margin-bottom: 10px;
+    }
+
+    .footer-column ul li a {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .footer-column ul li a:hover {
+        text-decoration: underline;
+    }
+
+    /* Footer bottom */
+    .footer-bottom {
+        text-align: center;
+        padding: 20px 0;
+        background-color: rgb(168, 197, 4);
+        margin-top: 20px;
+    }
+
+    .footer-bottom p {
+        margin: 0;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
+        .footer-container {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-column {
+            text-align: center;
+        }
+    }
+</style>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container-fluid">
+            <img src="./image/Black___Blue_Minimalist_Modern_Initial_Font_Logo-removebg-preview.png" alt="">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active text-light" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#vvv2">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#card">Gallrey</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#video">Videos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#team">Team</a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#service">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#conatct">Contact</a>
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+
+    <section id="hero">
+
+        <video autoplay muted loop id="myVideo">
+            <source src="./video/222.mp4" type="video/mp4">
+        </video>
+
+    </section>
+
+    <section id="card">
+        <h1>Gallrey</h1>
+        <div data-aos="fade-right">
+
+            <div class="container">
+                <div class="box">
+                    <div class="card">
+                        <img src="./image/WhatsApp Image 2024-10-08 at 9.28.10 PM.jpeg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title text-light text-center ">Back Stage</h5>
+
+                        </div>
+
+                        <div class="card-body">
+                            <center><a href="./image/WhatsApp Image 2024-10-08 at 9.28.10 PM.jpeg" class="card-link"
+                                    id="stage">Full image</a></center>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="card">
+                        <img src="./image/gallrey/WhatsApp Image 2024-10-11 at 3.02.35 AM.jpeg" class="card-img-top"
+                            alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title text-center text-light">Back Stage</h5>
+
+                        </div>
+
+                        <div class="card-body">
+                            <center><a href="./image/gallrey/WhatsApp Image 2024-10-11 at 3.02.35 AM.jpeg"
+                                    class="card-link" id="stage">Full image</a></center>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="card">
+                        <img src="./image/gallrey/WhatsApp Image 2024-10-11 at 3.02.36 AM (1).jpeg" class="card-img-top"
+                            alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title text-light text-center">Back Screen</h5>
+
+                        </div>
+
+                        <div class="card-body">
+                            <center><a href="./image/gallrey/WhatsApp Image 2024-10-11 at 3.02.36 AM (1).jpeg"
+                                    class="card-link" id="stage">Full image</a></center>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="card">
+                        <img src="./image/gallrey/WhatsApp Image 2024-10-11 at 3.02.36 AM (2).jpeg" class="card-img-top"
+                            alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title text-light text-center">Nikkha wall</h5>
+
+                        </div>
+
+                        <div class="card-body">
+                            <center><a href="./image/gallrey/WhatsApp Image 2024-10-11 at 3.02.36 AM (2).jpeg"
+                                    class="card-link" id="stage">Full image</a></center>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="card">
+                        <img src="./image/gallrey/WhatsApp Image 2024-10-11 at 3.02.36 AM.jpeg" class="card-img-top"
+                            alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title text-light text-center">Back Screen</h5>
+
+                        </div>
+
+                        <div class="card-body">
+                            <center><a href="./image/gallrey/WhatsApp Image 2024-10-11 at 3.02.36 AM.jpeg"
+                                    class="card-link" id="stage">Full image</a></center>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="card">
+                        <img src="./image/gallrey/WhatsApp Image 2024-10-11 at 3.02.37 AM.jpeg" class="card-img-top"
+                            alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title text-light text-center">Back Stage</h5>
+
+                        </div>
+
+                        <div class="card-body">
+                            <center><a href="./image/gallrey/WhatsApp Image 2024-10-11 at 3.02.37 AM.jpeg"
+                                    class="card-link" id="stage">Full image</a></center>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="card">
+                        <img src="./image/gallrey/WhatsApp Image 2024-10-11 at 3.02.43 AM.jpeg" class="card-img-top"
+                            alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title text-light text-center">Mehndi Event</h5>
+
+                        </div>
+
+                        <div class="card-body">
+                            <center><a href="./image/gallrey/WhatsApp Image 2024-10-11 at 3.02.43 AM.jpeg"
+                                    class="card-link" id="stage">Full image</a></center>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="card">
+                        <img src="./image/gallrey/WhatsApp Image 2024-10-11 at 3.02.38 AM.jpeg" class="card-img-top"
+                            alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title text-light text-center">Back Stage</h5>
+
+                        </div>
+
+                        <div class="card-body">
+                            <center><a href="./image/gallrey/WhatsApp Image 2024-10-11 at 3.02.38 AM.jpeg"
+                                    class="card-link" id="stage">Full image</a></center>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="card">
+                        <img src="./image/gallrey/WhatsApp Image 2024-10-11 at 3.02.45 AM.jpeg" class="card-img-top"
+                            alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title text-light text-center">Back Stage</h5>
+
+                        </div>
+
+                        <div class="card-body">
+                            <center><a href="./image/gallrey/WhatsApp Image 2024-10-11 at 3.02.45 AM.jpeg"
+                                    class="card-link" id="stage">Full image</a></center>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="card">
+                        <img src="./image/gallrey/WhatsApp Image 2024-10-11 at 3.02.45 AM (1).jpeg" class="card-img-top"
+                            alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title text-light text-center">Back Stage</h5>
+
+                        </div>
+
+                        <div class="card-body">
+                            <center><a href="./image/gallrey/WhatsApp Image 2024-10-11 at 3.02.45 AM (1).jpeg"
+                                    class="card-link" id="stage">Full image</a></center>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="card">
+                        <img src="./image/gallrey/WhatsApp Image 2024-10-11 at 3.02.44 AM.jpeg" class="card-img-top"
+                            alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title text-light text-center">Back Stage</h5>
+
+                        </div>
+
+                        <div class="card-body">
+                            <center><a href="./image/gallrey/WhatsApp Image 2024-10-11 at 3.02.44 AM.jpeg"
+                                    class="card-link" id="stage">Full image</a></center>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="card">
+                        <img src="./image/gallrey/WhatsApp Image 2024-10-11 at 3.02.44 AM (1).jpeg" class="card-img-top"
+                            alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title text-light text-center">Back Stage</h5>
+
+                        </div>
+
+                        <div class="card-body">
+                            <center><a href="./image/gallrey/WhatsApp Image 2024-10-11 at 3.02.44 AM (1).jpeg"
+                                    class="card-link" id="stage">Full image</a></center>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="card">
+                        <img src="./image/gallrey/s3.jpeg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title text-light text-center">Decorate Wedding room</h5>
+
+                        </div>
+
+                        <div class="card-body">
+                            <center><a href="./image/gallrey/s3.jpeg" class="card-link" id="stage">Full image</a>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="card">
+                        <img src="./image/gallrey/s2.jpeg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title text-light text-center">Decorate Wedding room</h5>
+
+                        </div>
+
+                        <div class="card-body">
+                            <center><a href="./image/gallrey/s2.jpeg" class="card-link" id="stage">Full image</a>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="card">
+                        <img src="./image/gallrey/s1.jpeg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title text-light text-center">Decorate Wedding room</h5>
+
+                        </div>
+
+                        <div class="card-body">
+                            <center><a href="./image/gallrey/s1.jpeg" class="card-link" id="stage">Full image</a>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+
+    </section>
+
+    <section id="video">
+        <h1>Events Video</h1>
+        <div class="vio1">
+            <div class="card1-video">
+                <a href="./video/aa (2).mp4"><img src="image/aa (1).jpeg"></a>
+
+            </div>
+            <div class="card1-video">
+                <a href="./video/aa (1).mp4"><img src="image/aa (2).jpeg"></a>
+
+            </div>
+            <div class="card1-video">
+                <a href="./video/kaka.mp4"><img src="./image/kaka.jpeg"></a>
+
+            </div>
+            <div class="card1-video">
+                <a href="./video/aaa.mp4"><img src="./image/aa.jpeg"></a>
+
+            </div>
+            <div class="card1-video">
+                <a href="./video/mm.mp4"><img src="./image/mm.jpeg"></a>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section id="vvv2">
+
+        <div class="main">
+            <div class="main1">
+                <img src="./image/Untitled.png" alt="">
+            </div>
+            <div class="text">
+                <h2>About </h2>
+                <p>Weddings are a special and deeply meaningful celebration of love and commitment between two
+                    individuals. They typically consist of a formal ceremony followed by a reception, bringing together
+                    family, friends, and loved ones to witness and celebrate the union.
+
+                    Weddings can vary greatly in terms of style, size, and tradition. Some key components often include:
+                </p>
+            </div>
+
+            <div class="sumaey">
+                <h3>Wedding Event Summary</h3>
+                <h6>Event Name: Couple's Name Wedding</h6>
+                <h6>Date: Wedding Date</h6>
+                <h6>Venue: Venue Name and Location</h6>
+                <h6>Theme: Theme/Style of the Wedding</h6>
+                <h6>Number of Guests: Estimated Number of Guests</h6>
+            </div>
+
+            <div class="party">
+                <h3>Party Event Summary</h3>
+                <h6>Event Name: Party Name or Occasion</h6>
+                <h6>Date: Event Date</h6>
+                <h6>Venue: Location Name and Address</h6>
+                <h6>Type of Party: [Birthday, Anniversary, Engagement, Corporate, etc.]</h6>
+                <h6>Theme: Theme, if any</h6>
+                <h6>Number of Guests: Estimated Number of Attendees</h6>
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- About end -->
+
+    <section id="service">
+
+
+
+        <h1>Service</h1>
+
+
+        <div class="ser2">
+            <video id="main2" autoplay muted loop id="myVideo">
+                <source src="./video/Light Hearted Elegant Wedding Trifold Brochure.mp4" type="video/mp4">
+            </video>
+        </div>
+    </section>
+
+
+
+
+
+
+    <section id="team">
+        <h1>AR Team</h1>
+        <div class="our">
+            <div class="worker">
+                <div class="image">
+
+                    <img src="./image/team/rafe.jpeg">
+                </div>
+                <h6>Rafique Khan</h6>
+            </div>
+
+            <div class="worker">
+                <div class="image">
+                    <img src="./image/team/sss.jpeg">
+
+                </div>
+                <h6>Subhan Abbasi</h6>
+            </div>
+
+            <div class="worker">
+                <div class="image">
+                    <img src="./image/team/mo.jpeg">
+
+                </div>
+                <h6>Mohsin Khan</h6>
+            </div>
+            <div class="worker">
+                <div class="image">
+                    <img src="./image/team/WhatsApp Image 2024-10-13 at 1.54.10 AM.jpeg">
+
+                </div>
+                <h6>Faisal Khan</h6>
+            </div>
+
+
+
+
+        </div>
+
+
+
+
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <services end></services> -->
+
+
+    <section id="conatct">
+        <h1>Contact Us</h1>
+        <div class="cont">
+
+            <div class="contt1">
+                <div class="flex">
+                    <center><span>Owner Name :</span></center>
+                    <span> Faisal Khan</span>
+                </div>
+                <div class="flex1">
+                    <span>Contact No :</span>
+                    <span>03123830356</span>
+
+                </div>
+
+                <div class="flip">
+                    <span>
+                        Nephew Name :</span>
+                    <span> Bilal Khan</span>
+
+                </div>
+                <div class="flip1">
+                    <span> Contact No :</span>
+                    <span>03123078860</span>
+                </div>
+                <div class="flip2">
+                    <span> Email :</span>
+                    <span>bilalkhan098bilal@gmail.com</span>
+
+                </div>
+
+                <p id="prag">Al Rehman Event Management is a full-service event management company that specializes in
+                    planning, organizing, and executing a wide variety of events such as weddings, corporate gatherings,
+                    birthday parties, concerts, and more. With a reputation for excellence, they offer tailored services
+                    including venue selection, catering, décor, entertainment, and photography to make your event a
+                    seamless and memorable experience. Their expert team ensures that each event is customized to the
+                    client,
+
+                </p>
+                <div class="link">
+
+                    <a href="https://wa.me/03123078860"><i class="fa-brands fa-whatsapp" id="what"></i></a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- contact end -->
+
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>About Us</h3>
+                <p>Weddings are a special and deeply meaningful celebration of love and commitment between two
+                    individuals.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#">Electric Decoration</a></li>
+                    <li><a href="#">Wedding idea</a></li>
+                    <li><a href="#">Thanks to all</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li>Email: bilalkhan098bilal@gmail.com.com</li>
+                    <li>Phone: +92 (0312-3078860)</li>
+                    <li>Location: hyderabad & Karachi</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Your Bilal khan Designer. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+
+
+
+
+
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
